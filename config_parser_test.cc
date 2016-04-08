@@ -94,6 +94,14 @@ TEST_F(NginxConfigParserTest, ClassConfig) {
   EXPECT_TRUE(success);
 }
 
+// NOTE: Error was corrected in config_parser.cc
+TEST_F(NginxConfigParserTest, EmptyBracketConfig) {
+  bool success = testSuccess("example_config12");
+  // empty brackets { } should be accepted (e.g. while loop)
+  EXPECT_TRUE(success);
+}
+
+
 TEST(NginxConfigTest, ToString) {
     NginxConfigStatement statement;
     statement.tokens_.push_back("foo");
