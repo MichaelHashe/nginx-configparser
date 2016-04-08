@@ -81,10 +81,16 @@ TEST_F(NginxConfigParserTest, NestedLoopConfig) {
   EXPECT_TRUE(success);
 }
 
+TEST_F(NginxConfigParserTest, PunctuationConfig) {
+  bool success = testSuccess("example_config10");
+  // Punctuation should probably be accepted
+  EXPECT_TRUE(success);
+}
+
 TEST(NginxConfigTest, ToString) {
     NginxConfigStatement statement;
     statement.tokens_.push_back("foo");
-    
+
     EXPECT_EQ("foo;\n", statement.ToString(0));
     statement.tokens_.push_back("bar");
 
