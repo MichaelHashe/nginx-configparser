@@ -83,16 +83,18 @@ TEST_F(NginxConfigParserTest, NestedLoopConfig) {
 
 TEST(NginxConfigTest, ToString) {
     NginxConfigStatement statement;
-    // Empty string
-    EXPECT_EQ(";\n", statement.ToString(0));
-
     statement.tokens_.push_back("foo");
-
+    
     EXPECT_EQ("foo;\n", statement.ToString(0));
-
     statement.tokens_.push_back("bar");
 
     // String and indented string
     EXPECT_EQ("foo bar;\n", statement.ToString(0));
     EXPECT_EQ("  foo bar;\n", statement.ToString(1));
+}
+
+TEST(NginxConfigTest, EmptyString) {
+    NginxConfigStatement statement;
+    // Empty string
+    EXPECT_EQ(";\n", statement.ToString(0));
 }
