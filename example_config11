@@ -1,0 +1,14 @@
+class Class {
+
+public:
+    method1;
+    method2;
+
+protected:
+  variable1;
+  variable2;
+
+private:
+  private;
+
+};
